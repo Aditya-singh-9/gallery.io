@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>filterable responsive Image gallery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.cs">
+    <link rel="stylesheet" href="style.css">
+    <link rel="scripts" href="scripts.js">
+</head>
+<body>
+
+
+<div class="gallery">
+
+    <ul class="controls">
+        <li class="buttons active" data-filter="all">all</li>
+        <li class="buttons" data-filter="Pav-Bhaji">Pav-Bhaji</li>
+        <li class="buttons" data-filter="chole-bhature">chole-bhature</li>
+        <li class="buttons" data-filter="Cake">cake</li>
+        <li class="buttons" data-filter="juice">juice</li>
+        <li class="buttons" data-filter="sandwich">sandwich</li>
+    </ul>
+
+    <div class="image-container">
+
+        <a href="Pavbhaji1.jpg" class="image Pav-Bhaji">
+            <img src="Pavbhaji1.jpg" alt="">
+        </a>
+        <a href="Pavbhaji2.jpg" class="image Pav-Bhaji">
+            <img src="Pavbhaji2.jpg" alt="">
+        </a>
+        <a href="Pavbaji3.jpg" class="image Pav-Bhaji">
+            <img src="Pavbaji3.jpg" alt="">
+        </a>
+
+        <a href="cholebhature (1).jpg" class="image chole-bhature">
+            <img src="cholebhature (1).jpg" alt="">
+        </a>
+        <a href="cholebhature (2).jpg" class="image chole-bhature">
+            <img src="cholebhature (2).jpg" alt="">
+        </a>
+        <a href="Cake1.jpg" class="image Cake">
+            <img src="Cake1.jpg" alt="">
+        </a>
+        <a href="Cake2.jpg" class="image Cake">
+            <img src="Cake2.jpg" alt="">
+        </a>
+        <a href="Cake3.jpg" class="image Cake">
+            <img src="Cake3.jpg" alt="">
+        </a>
+        <a href="Cake4.jpg" class="image Cake">
+            <img src="Cake4.jpg" alt="">
+        </a>
+        <a href="Cake5.jpg" class="image Cake">
+            <img src="Cake5.jpg" alt="">
+        </a>
+
+        <a href="Juice1.jpg" class="image juice">
+            <img src="Juice1.jpg" alt="">
+        </a>
+        <a href="Juice2.jpg" class="image juice">
+            <img src="Juice2.jpg" alt="">
+        </a>
+        <a href="juice3.jpg" class="image juice">
+            <img src="juice3.jpg" alt="">
+        </a>
+
+        <a href="sandwich1.jpg" class="image sandwich">
+            <img src="sandwich1.jpg" alt="">
+        </a>
+        <a href="sandwich2.jpg" class="image sandwich">
+            <img src="sandwich2.jpg" alt="">
+        </a>
+        <a href="sandwich3.jpg" class="image sandwich">
+            <img src="sandwich3.jpg" alt="">
+        </a>
+        <a href="sandwich4.jpg" class="image sandwich">
+            <img src="sandwich4.jpg" alt="">
+        </a>
+
+    </div>
+
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script>
+$(document).ready(function(){
+
+$('.buttons').click(function(){
+
+    $(this).addClass('active').siblings().removeClass('active');
+
+    var filter = $(this).attr('data-filter')
+
+    if(filter == 'all'){
+        $('.image').show(400);
+    }else{
+        $('.image').not('.'+filter).hide(200);
+        $('.image').filter('.'+filter).show(400);
+    }
+
+});
+
+
+
+});
+   
+   $(document).ready(function() {
+    // Code for filtering functionality and lightbox
+
+    // Function to update the image container layout based on screen size
+    function updateGalleryLayout() {
+        const newWidth = ($(window).width() <= 768) ? 'calc(50% - 40px)' : 'calc(33.33% - 40px)';
+        $('.image').css('width', newWidth);
+    }
+    updateGalleryLayout();
+    $(window).resize(updateGalleryLayout);
+});
+
+$('.gallery').magnificPopup({
+    delegate: 'a',
+    type: 'image',
+    gallery: {
+        enabled: true
+    }
+});
+
+
+</script>
+    
+</body>
+</html>
